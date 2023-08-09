@@ -1,1 +1,26 @@
-<p>products works!</p>
+
+<div style="margin:50px;padding:10px;background-color:brown">
+  <h3>Product Details</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let item of Products">
+           <td>{{item.Id}}</td>
+           <td>{{item.Name}}</td>
+    </tr>
+    <!-- <tr>
+      <td>1</td>
+      <td>IPhone</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Samsung</td>
+    </tr> -->
+  </tbody>
+</table>
+</div>

@@ -1,16 +1,17 @@
 import { Component, ViewChild , ElementRef} from '@angular/core';
 import { LogService } from '../log.service';
+import { ProductService } from '../products.services';
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
-  providers : [LogService]
+  providers : [LogService , ProductService]
 })
 export class NewProductComponent {
 
 
-   constructor(private logService : LogService){}
+   constructor(private logService : LogService , private productService: ProductService){}
 
   //new NewProductComponent();
 
@@ -24,6 +25,8 @@ export class NewProductComponent {
      //let logService = new LogService();
      //logService.getLog();
      this.logService.getLogByName(elValue);
+
+     this.productService.createProduct(elValue);
 
   }
 
