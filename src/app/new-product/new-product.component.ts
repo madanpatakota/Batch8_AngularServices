@@ -6,7 +6,7 @@ import { ProductService } from '../products.services';
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
-  providers : [LogService , ProductService]
+  providers : []
 })
 export class NewProductComponent {
 

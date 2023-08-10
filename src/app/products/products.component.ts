@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , OnInit } from '@angular/core';
 import { ProductService } from '../products.services';
 
 //Target : i need the products List in  my Component
@@ -11,12 +11,12 @@ import { ProductService } from '../products.services';
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers : [ProductService]
+  providers : []
 })
 
 //1.DataBinding..
 //2.Viewchild
-export class ProductsComponent {
+export class ProductsComponent implements OnInit  {
 
   // [
   //   {
@@ -37,6 +37,16 @@ export class ProductsComponent {
     constructor(private productService : ProductService){
           
     }
+
+    //subscription
+    ngOnInit(): void {
+        this.productService.statusEmitter.subscribe((latestData)=>{
+            console.log("You are in the Products Component");
+            console.log(latestData);
+        })
+    }
+
+
 
 
 

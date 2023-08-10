@@ -1,7 +1,15 @@
+
+import { EventEmitter, Injectable } from '@angular/core';
+import { LogService } from './log.service';
+
+
+@Injectable()
 export class ProductService {
   products: any = [];
+  statusEmitter = new EventEmitter<string>();
+  /* we can emit data */
 
-  constructor() {
+  constructor(private logService:LogService) {
     this.products = [
       {
         Id: 1,
@@ -23,18 +31,13 @@ export class ProductService {
   createProduct(product:string){
        /// Statements ... 
        console.log("product name is " , product);   //oppo
-
       //  .length
-
       //[1,3,3,4,55,5,55]  => 7
-        
-
        //{ Id : 3 , Name : 'Oppo'};
        let latestRecord =  { Id : this.products.length + 1 , 'Name' :  product };
-
        this.products.push(latestRecord);   // 3 records
-
-       console.log(this.products);
+       this.statusEmitter.emit("You have entered the New value . you know i.e. is the " + product);
+       this.logService.getLogByName("Log is " + product);
        return this.products;
   }
   
